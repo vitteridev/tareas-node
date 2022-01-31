@@ -23,26 +23,27 @@ const autos = [
   },
 ];
 
-function calcularSeguroTotal(marca, modelo, precio) {
-  let seguro = calcularSeguro(marca, precio);
+function calcularSeguroTotal(auto) {
+  let seguro = calcularSeguro(auto);
   seguroTotal += seguro;
-  console.log(`${marca} ${modelo}: paga un seguro de $${seguro}`);
+  console.log(`${auto.marca} ${auto.modelo}: paga un seguro de $${seguro}`);
 }
 
-function calcularSeguro(marca, precio) {
-  let vaAPagar = precio;
+function calcularSeguro(auto) {
+  let vaAPagar = auto.precio;
+  const marca = auto.marca;
 
   switch (marca) {
-    case marca:
+    case "Renault":
       vaAPagar *= 0.5;
       break;
-    case marca:
+    case "Ford":
       vaAPagar *= 0.6;
       break;
-    case marca:
+    case "Honda":
       vaAPagar *= 0.7;
       break;
-    case marca:
+    case "Fiat":
       vaAPagar *= 0.8;
       break;
   }
@@ -51,7 +52,7 @@ function calcularSeguro(marca, precio) {
 
 function main() {
   for (let auto of autos) {
-    calcularSeguroTotal(auto.marca, auto.modelo, auto.precio);
+    calcularSeguroTotal(auto);
   }
   console.log(`Seguro total a pagar: ${seguroTotal}`);
 }
